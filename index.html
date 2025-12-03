@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Hervin Corpuz — Professional Portfolio</title>
+	<meta name="description" content="Hervin Corpuz — General Virtual Assistant. Services for businesses: operations, client support, admin, and digital assistance." />
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+		
+		* { font-family: 'Space Grotesk', sans-serif; }
+		
+		html, body {
+			scroll-behavior: smooth;
+			perspective: 1000px;
+		}
+		
+		body {
+			scroll-snap-type: y mandatory;
+			padding-top: 110px;
+			background: #0f172a;
+		}
+		
+		main > section {
+			scroll-snap-align: start;
+			scroll-snap-stop: always;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			opacity: 0;
+			animation: sectionFadeIn 0.8s ease-out forwards;
+		}
+		
+		@keyframes sectionFadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(60px) rotateX(10deg);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0) rotateX(0deg);
+			}
+		}
+		
+		main > section:nth-child(1) { animation-delay: 0s; }
+		main > section:nth-child(2) { animation-delay: 0.1s; }
+		main > section:nth-child(3) { animation-delay: 0.2s; }
+		main > section:nth-child(4) { animation-delay: 0.3s; }
+		main > section:nth-child(5) { animation-delay: 0.4s; }
+		main > section:nth-child(6) { animation-delay: 0.5s; }
+		
+		.hero-gradient { 
+			background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1a3a52 100%);
+			position: relative;
+			overflow: hidden;
+		}
+		
+		.blob {
+			position: absolute;
+			border-radius: 50%;
+			opacity: 0.1;
+		}
+		
+		.blob-1 {
+			width: 500px;
+			height: 500px;
+			background: radial-gradient(circle, #10b981 0%, transparent 70%);
+			top: -100px;
+			right: -100px;
+			animation: float 8s ease-in-out infinite;
+		}
+		
+		.blob-2 {
+			width: 400px;
+			height: 400px;
+			background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+			bottom: -80px;
+			left: -80px;
+			animation: float 10s ease-in-out infinite reverse;
+		}
+		
+		.blob-3 {
+			width: 350px;
+			height: 350px;
+			background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			animation: float 12s ease-in-out infinite;
+		}
+		
+		@keyframes float {
+			0%, 100% { transform: translateY(0px) translateX(0px); }
+			33% { transform: translateY(-40px) translateX(20px); }
+			66% { transform: translateY(20px) translateX(-20px); }
+		}
+		
+		.img-cut {
+			clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
+		}
+		
+		.card-hover {
+			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			transform-style: preserve-3d;
+		}
+		
+		.card-hover:hover {
+			transform: translateY(-12px) rotateX(-5deg) rotateZ(2deg);
+			box-shadow: 0 30px 60px rgba(16, 185, 129, 0.25);
+		}
+		
+		.accent-gradient {
+			background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+		}
+		
+		.accent-gradient-blue {
+			background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+		}
+		
+		.text-gradient {
+			background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+		
+		.nav-link {
+			position: relative;
+			overflow: hidden;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+		
+		.nav-link::after {
+			content: '';
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background: linear-gradient(90deg, #10b981, #06b6d4);
+			transition: width 0.3s ease;
+		}
+		
+		.nav-link:hover::after {
+			width: 100%;
+		}
+		
+		.nav-link.active {
+			color: #10b981;
+		}
+		
+		.nav-link.active::after {
+			width: 100%;
+		}
+		
+		.section-heading {
+			position: relative;
+			display: inline-block;
+		}
+		
+		.section-heading::after {
+			content: '';
+			position: absolute;
+			bottom: -8px;
+			left: 0;
+			width: 60px;
+			height: 4px;
+			background: linear-gradient(90deg, #10b981, #06b6d4);
+			border-radius: 2px;
+		}
+		
+		.fade-in {
+			animation: fadeIn 0.8s ease-out;
+		}
+		
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+		
+		.grid-item {
+			animation: scaleIn 0.8s ease-out;
+			transform-style: preserve-3d;
+		}
+		
+		@keyframes scaleIn {
+			from {
+				opacity: 0;
+				transform: translateY(30px) scale(0.95) rotateY(-10deg);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0) scale(1) rotateY(0deg);
+			}
+		}
+		
+		.grid-item:nth-child(1) { animation-delay: 0.1s; }
+		.grid-item:nth-child(2) { animation-delay: 0.2s; }
+		.grid-item:nth-child(3) { animation-delay: 0.3s; }
+		.grid-item:nth-child(4) { animation-delay: 0.4s; }
+		
+		.button-primary {
+			background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+			transition: all 0.3s ease;
+		}
+		
+		.button-primary:hover {
+			transform: translateY(-4px) scale(1.05);
+			box-shadow: 0 20px 40px rgba(16, 185, 129, 0.4);
+		}
+		
+		.button-primary:active {
+			transform: translateY(-1px) scale(0.98);
+		}
+	</style>
+</head>
+<body class="antialiased text-gray-100 bg-slate-950">
+	<!-- Navigation -->
+	<header class="sticky top-0 w-full z-50 backdrop-blur-md bg-slate-950/98 border-b-2 border-emerald-500/30 shadow-2xl">
+		<nav class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+			<a href="#hero" class="text-2xl font-bold text-gradient tracking-tight">Hervin</a>
+			<ul class="hidden md:flex gap-10 text-sm font-semibold uppercase tracking-wide">
+				<li><a href="#hero" class="nav-link active text-gray-300 hover:text-white transition duration-300">Home</a></li>
+				<li><a href="#about" class="nav-link text-gray-300 hover:text-white transition duration-300">About</a></li>
+				<li><a href="#services" class="nav-link text-gray-300 hover:text-white transition duration-300">Services</a></li>
+				<li><a href="#work" class="nav-link text-gray-300 hover:text-white transition duration-300">Experience</a></li>
+				<li><a href="#contact" class="nav-link text-gray-300 hover:text-white transition duration-300">Contact</a></li>
+			</ul>
+			<a href="#contact" class="px-6 py-3 accent-gradient text-white text-sm font-bold rounded-lg hover:shadow-lg transition transform hover:scale-105">Contact</a>
+		</nav>
+	</header>
+
+	<main class="pt-0">
+		<!-- HERO -->
+		<section id="hero" class="hero-gradient min-h-screen flex items-center relative">
+			<div class="blob blob-1"></div>
+			<div class="blob blob-2"></div>
+			<div class="blob blob-3"></div>
+			
+			<div class="max-w-7xl mx-auto w-full px-6 relative z-10">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<!-- Image -->
+					<div class="relative order-2 lg:order-1 flex justify-center lg:justify-end transform transition-all duration-700 hover:scale-105">
+						<div class="relative w-full max-w-md lg:max-w-lg">
+							<div class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-2xl blur-3xl opacity-20"></div>
+							<img src="Hervin.png" alt="Hervin Corpuz" class="img-cut relative shadow-2xl rounded-2xl w-full hover:shadow-emerald-500/50 transition-shadow duration-500" />
+						</div>
+					</div>
+
+					<!-- Content -->
+					<div class="order-1 lg:order-2 fade-in">
+						<p class="text-emerald-400 font-semibold text-sm tracking-widest mb-4">HELLO EVERYONE</p>
+						<h1 class="text-5xl lg:text-6xl font-black leading-tight mb-6">
+							I'M<br /><span class="text-gradient">HERVIN CORPUZ</span>
+						</h1>
+						<p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-xl">
+							Professional Virtual Assistant & Digital Designer specializing in multimedia editing, web prototype design, and creative solutions. I help businesses bring their visions to life.
+						</p>
+
+						<div class="flex flex-col sm:flex-row gap-4 mb-8">
+							<a href="#services" class="button-primary px-8 py-3 text-white font-semibold rounded-lg flex items-center justify-center gap-2">
+								Explore Services
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+							</a>
+							<a href="#contact" class="px-8 py-3 border-2 border-emerald-500 text-emerald-400 font-semibold rounded-lg hover:bg-emerald-500/10 transition">Contact me</a>
+						</div>
+
+						<!-- Social Icons -->
+						<div class="flex gap-4 pt-6 border-t border-emerald-500/20">
+							<a href="#" class="w-12 h-12 flex items-center justify-center border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 hover:scale-110 transition-transform duration-300" aria-label="Facebook">
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a4 4 0 00-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 011-1h3z"/></svg>
+							</a>
+							<a href="#" class="w-12 h-12 flex items-center justify-center border border-cyan-500/30 rounded-lg hover:bg-cyan-500/10 hover:scale-110 transition-transform duration-300" aria-label="Instagram">
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg>
+							</a>
+							<a href="#" class="w-12 h-12 flex items-center justify-center border border-purple-500/30 rounded-lg hover:bg-purple-500/10 hover:scale-110 transition-transform duration-300" aria-label="LinkedIn">
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v6h-4v-6a2 2 0 00-4 0v6h-4v-12h4v2M2 9h4v12H2z"/></svg>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ABOUT -->
+		<section id="about" class="py-24 bg-gradient-to-b from-slate-900 to-slate-950 min-h-screen flex items-center">
+			<div class="max-w-7xl mx-auto px-6 w-full">
+				<div class="mb-12">
+					<h2 class="section-heading text-3xl lg:text-4xl font-black">About Me</h2>
+				</div>
+
+				<div class="grid lg:grid-cols-3 gap-8">
+					<div class="lg:col-span-1 fade-in">
+						<p class="text-gray-300 text-lg leading-relaxed">
+							I bring passion and dedication to providing high-impact digital design and virtual assistant services to growing businesses. My core strengths enable me to deliver exceptional results.
+						</p>
+					</div>
+
+					<div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
+						<div class="grid-item p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-emerald-500/20 card-hover">
+							<div class="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center text-slate-950 font-bold mb-4">01</div>
+							<h3 class="text-lg font-bold mb-2">Problem Solving</h3>
+							<p class="text-gray-400 text-sm">Analytical approach to identifying challenges and implementing effective solutions for complex tasks.</p>
+						</div>
+
+						<div class="grid-item p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-cyan-500/20 card-hover">
+							<div class="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center text-slate-950 font-bold mb-4">02</div>
+							<h3 class="text-lg font-bold mb-2">Team Collaboration</h3>
+							<p class="text-gray-400 text-sm">Strong ability to work effectively with diverse teams, fostering communication and shared goals.</p>
+						</div>
+
+						<div class="grid-item p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-purple-500/20 card-hover">
+							<div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center text-white font-bold mb-4">03</div>
+							<h3 class="text-lg font-bold mb-2">Time Management</h3>
+							<p class="text-gray-400 text-sm">Expert in prioritizing tasks, meeting deadlines, and optimizing workflow efficiency.</p>
+						</div>
+
+						<div class="grid-item p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-emerald-500/20 card-hover">
+							<div class="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center text-slate-950 font-bold mb-4">04</div>
+							<h3 class="text-lg font-bold mb-2">Good Communication</h3>
+							<p class="text-gray-400 text-sm">Clear and professional communication skills for client relations and project coordination.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- SERVICES -->
+		<section id="services" class="py-24 min-h-screen flex items-center">
+			<div class="max-w-7xl mx-auto px-6 w-full">
+				<div class="mb-12">
+					<h2 class="section-heading text-3xl lg:text-4xl font-black">Services</h2>
+				</div>
+
+				<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+					<div class="grid-item p-8 bg-gradient-to-br from-emerald-900/20 via-slate-900 to-slate-950 rounded-xl border border-emerald-500/30 card-hover">
+						<div class="text-4xl mb-4 text-emerald-400">
+							<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<rect x="3" y="4" width="18" height="12" rx="2" ry="2"></rect>
+								<path d="M2 18h20"></path>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold mb-3 text-emerald-400">Digital Design</h3>
+						<p class="text-gray-400 mb-4">Creative layouts, branding concepts, and digital assets tailored for social media, presentations, and marketing.</p>
+					</div>
+
+					<div class="grid-item p-8 bg-gradient-to-br from-cyan-900/20 via-slate-900 to-slate-950 rounded-xl border border-cyan-500/30 card-hover">
+						<div class="text-4xl mb-4 text-cyan-400">
+							<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<rect x="4" y="4" width="12" height="16" rx="2" ry="2"></rect>
+								<path d="M16 8l4-2v12l-4-2"></path>
+								<path d="M8 8h4"></path>
+								<path d="M8 12h3"></path>
+								<path d="M8 16h2"></path>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold mb-3 text-cyan-400">Multimedia Editing</h3>
+						<p class="text-gray-400 mb-4">Video and image editing for reels, promos, and content that captures attention and tells your story.</p>
+					</div>
+
+					<div class="grid-item p-8 bg-gradient-to-br from-purple-900/20 via-slate-900 to-slate-950 rounded-xl border border-purple-500/30 card-hover">
+						<div class="text-4xl mb-4 text-purple-400">
+							<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<rect x="3" y="10" width="4" height="8" rx="1"></rect>
+								<rect x="10" y="6" width="4" height="12" rx="1"></rect>
+								<rect x="17" y="4" width="4" height="14" rx="1"></rect>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold mb-3 text-purple-400">Web Prototype Design</h3>
+						<p class="text-gray-400 mb-4">Modern, user-focused web layouts and flows to visualize website ideas before development.</p>
+					</div>
+
+					<div class="grid-item p-8 bg-gradient-to-br from-sky-900/20 via-slate-900 to-slate-950 rounded-xl border border-sky-500/30 card-hover">
+						<div class="text-4xl mb-4 text-sky-400">
+							<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<rect x="4" y="4" width="7" height="7" rx="2"></rect>
+								<rect x="13" y="4" width="7" height="7" rx="2"></rect>
+								<rect x="4" y="13" width="7" height="7" rx="2"></rect>
+								<rect x="13" y="13" width="7" height="7" rx="2"></rect>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold mb-3 text-sky-400">Figma Design</h3>
+						<p class="text-gray-400 mb-4">High-fidelity Figma designs, components, and prototypes ready for handoff to developers.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- WORK / CASES -->
+		<section id="work" class="py-24 bg-gradient-to-b from-slate-950 to-slate-900 min-h-screen flex items-center">
+			<div class="max-w-7xl mx-auto px-6 w-full">
+				<div class="mb-12">
+					<h2 class="section-heading text-3xl lg:text-4xl font-black">Experience</h2>
+				</div>
+
+				<div class="grid md:grid-cols-2 gap-6">
+					<div class="grid-item p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-emerald-500/20 card-hover group">
+						<div class="text-3xl mb-4 group-hover:scale-110 transition text-emerald-400">
+							<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<rect x="3" y="7" width="11" height="10" rx="2"></rect>
+								<path d="M14 9l5-3v12l-5-3"></path>
+							</svg>
+						</div>
+						<h4 class="text-lg font-bold mb-3">Video and Image Editing Project</h4>
+						<p class="text-gray-400 text-sm mb-4">Edited and enhanced video clips and images to create engaging content suitable for social media and presentations.</p>
+						<div class="flex gap-2 flex-wrap">
+							<span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Multimedia</span>
+							<span class="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded">Editing</span>
+						</div>
+					</div>
+
+					<div class="grid-item p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-cyan-500/20 card-hover group">
+						<div class="text-3xl mb-4 group-hover:scale-110 transition text-cyan-400">
+							<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<path d="M9 18h6"></path>
+								<path d="M10 21h4"></path>
+								<path d="M8 10a4 4 0 118 0c0 1.657-.895 2.5-1.6 3.2-.43.43-.8.8-.96 1.3H10.56c-.16-.5-.53-.87-.96-1.3C8.895 12.5 8 11.657 8 10z"></path>
+							</svg>
+						</div>
+						<h4 class="text-lg font-bold mb-3">Web Prototype Concept Design Project</h4>
+						<p class="text-gray-400 text-sm mb-4">Designed a modern web prototype concept focusing on user experience, layout, and visual hierarchy for future development.</p>
+						<div class="flex gap-2 flex-wrap">
+							<span class="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded">Web Design</span>
+							<span class="text-xs bg-purple-500/20 text-purple-400 px-2 py-1 rounded">Prototype</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CONTACT -->
+		<section id="contact" class="py-24 min-h-screen flex items-center">
+			<div class="max-w-7xl mx-auto px-6 w-full">
+				<div class="mb-12">
+					<h2 class="section-heading text-3xl lg:text-4xl font-black">Get In Touch</h2>
+				</div>
+
+				<div class="grid lg:grid-cols-2 gap-12">
+					<div class="fade-in space-y-6">
+						<p class="text-lg text-gray-300 leading-relaxed">
+							Have a project or idea? You can reach me directly using the details below or send a message through the form.
+						</p>
+						<div class="space-y-4">
+							<div class="flex items-start gap-4 card-hover p-4 rounded-lg">
+								<div class="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-400 flex-shrink-0 mt-1">
+									<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+										<rect x="7" y="3" width="10" height="18" rx="2"></rect>
+										<path d="M11 18h2"></path>
+									</svg>
+								</div>
+								<div>
+									<p class="text-sm text-gray-400">Phone</p>
+									<p class="text-lg font-semibold">09513838880</p>
+								</div>
+							</div>
+							<div class="flex items-start gap-4 card-hover p-4 rounded-lg">
+								<div class="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-400 flex-shrink-0 mt-1">
+									<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+										<path d="M12 21s-6-4.35-6-10a6 6 0 0112 0c0 5.65-6 10-6 10z"></path>
+										<circle cx="12" cy="11" r="2"></circle>
+									</svg>
+								</div>
+								<div>
+									<p class="text-sm text-gray-400">Location</p>
+									<p class="text-lg font-semibold">Brgy 73-A Bucana Sandawa Davao City</p>
+								</div>
+							</div>
+							<div class="flex items-start gap-4 card-hover p-4 rounded-lg">
+								<div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 flex-shrink-0 mt-1">
+									<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+										<rect x="3" y="5" width="18" height="14" rx="2"></rect>
+										<path d="M5 7l7 6 7-6"></path>
+									</svg>
+								</div>
+								<div>
+									<p class="text-sm text-gray-400">Email</p>
+									<a href="mailto:hervinlei_corpuz@sjp2cd.edu.ph" class="text-lg font-semibold hover:text-emerald-400">hervinlei_corpuz@sjp2cd.edu.ph</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="grid-item p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-emerald-500/20">
+						<form class="space-y-6">
+							<div>
+								<label class="block text-sm font-semibold text-gray-300 mb-2">Full Name</label>
+								<input type="text" class="w-full bg-slate-950 text-gray-100 px-4 py-3 rounded-lg border border-slate-700 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition" placeholder="Enter Full Name" />
+							</div>
+							<div>
+								<label class="block text-sm font-semibold text-gray-300 mb-2">Email Address</label>
+								<input type="email" class="w-full bg-slate-950 text-gray-100 px-4 py-3 rounded-lg border border-slate-700 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition" placeholder="Enter Email Address" />
+							</div>
+							<div>
+								<label class="block text-sm font-semibold text-gray-300 mb-2">Project Details</label>
+								<textarea class="w-full bg-slate-950 text-gray-100 px-4 py-3 rounded-lg border border-slate-700 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition" rows="4" placeholder="Tell me about your project, timeline, and goals..."></textarea>
+							</div>
+							<button type="submit" class="button-primary w-full py-3 text-white font-bold rounded-lg flex items-center justify-center gap-2">
+								Send Message
+								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer class="border-t border-emerald-500/10 bg-gradient-to-b from-slate-900 to-slate-950">
+			<div class="max-w-7xl mx-auto px-6 py-8">
+				<div class="flex flex-col md:flex-row items-center justify-between gap-4">
+					<div class="text-sm text-gray-400">
+						© 2025 Hervin Corpuz. All Rights Reserved.
+					</div>
+					<div class="flex gap-6 text-sm">
+						<a href="#" class="text-gray-400 hover:text-emerald-400 transition">Privacy Policy</a>
+						<a href="#" class="text-gray-400 hover:text-emerald-400 transition">Terms of Service</a>
+						<a href="#contact" class="text-gray-400 hover:text-emerald-400 transition">Contact</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</main>
+
+	<script>
+		// Track active section and update nav
+		const sections = document.querySelectorAll('main > section');
+		const navLinks = document.querySelectorAll('.nav-link');
+
+		function updateActiveNav() {
+			let current = '';
+			sections.forEach(section => {
+				const sectionTop = section.offsetTop;
+				const sectionHeight = section.clientHeight;
+				if (pageYOffset >= sectionTop - 100) {
+					current = section.getAttribute('id');
+				}
+			});
+
+			navLinks.forEach(link => {
+				link.classList.remove('active');
+				if (link.getAttribute('href') === '#' + current) {
+					link.classList.add('active');
+				}
+			});
+		}
+
+		window.addEventListener('scroll', updateActiveNav);
+		updateActiveNav();
+
+		// Add 3D tilt effect on hover for cards
+		const cards = document.querySelectorAll('.card-hover');
+		cards.forEach(card => {
+			card.addEventListener('mousemove', (e) => {
+				const rect = card.getBoundingClientRect();
+				const x = e.clientX - rect.left;
+				const y = e.clientY - rect.top;
+				const centerX = rect.width / 2;
+				const centerY = rect.height / 2;
+				const rotateX = (y - centerY) * 0.02;
+				const rotateY = (centerX - x) * 0.02;
+				card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+			});
+
+			card.addEventListener('mouseleave', () => {
+				card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+			});
+		});
+
+		// Smooth scroll snap effect with 3D rotation
+		let lastScrollTop = 0;
+		window.addEventListener('scroll', () => {
+			const scrollTop = window.pageYOffset;
+			const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+			
+			sections.forEach(section => {
+				const rect = section.getBoundingClientRect();
+				const progress = 1 - Math.abs(rect.top) / window.innerHeight;
+				
+				if (progress > 0 && progress < 1) {
+					const rotateX = (scrollDirection === 'down' ? -5 : 5) * (1 - progress);
+					section.style.transform = `perspective(1200px) rotateX(${rotateX}deg)`;
+					section.style.opacity = 0.7 + progress * 0.3;
+				} else if (progress >= 1) {
+					section.style.transform = 'perspective(1200px) rotateX(0deg)';
+					section.style.opacity = '1';
+				}
+			});
+
+			lastScrollTop = scrollTop;
+		});
+
+		// Parallax effect on hero image
+		const heroImg = document.querySelector('.img-cut');
+		window.addEventListener('scroll', () => {
+			const scrollY = window.pageYOffset;
+			if (heroImg) {
+				heroImg.style.transform = `translateY(${scrollY * 0.3}px) rotateZ(${scrollY * 0.01}deg)`;
+			}
+		});
+	</script>
+</body>
+</html>
+
